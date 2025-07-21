@@ -1,0 +1,223 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Install dependencies
+      run: |
+        pip install pylint
+    - name: Coding Style
+      id: coding-style
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Coding Style
+        setup-command: ''
+        command: "pylint card.py"
+        timeout: 10
+        max-score: 10
+    - name: test_is_trump_basic
+      id: test_is_trump_basic
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test_is_trump_basic
+        setup-command: ''
+        command: "python -m unittest test_card.TestCard.test_is_trump_with_trump_suit"
+        timeout: 10
+        max-score: 10
+    - name: test_is_trump_off_jacks
+      id: test_is_trump_off_jacks
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test_is_trump_off_jacks
+        setup-command: ''
+        command: "python -m unittest test_card.TestCard.test_is_trump_off_jacks"
+        timeout: 10
+        max-score: 10
+    - name: test_is_trump_jokers
+      id: test_is_trump_jokers
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test_is_trump_jokers
+        setup-command: ''
+        command: "python -m unittest test_card.TestCard.test_is_trump_jokers"
+        timeout: 10
+        max-score: 10
+    - name: test_is_nontrump
+      id: test_is_nontrump
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test_is_nontrump
+        setup-command: ''
+        command: "python -m unittest test_card.TestCard.test_is_nontrump"
+        timeout: 10
+        max-score: 10
+    - name: test_card_initialization
+      id: test_card_initialization
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test_card_initialization
+        setup-command: ''
+        command: "python -m unittest test_card.TestCard.test_card_initialization_valid"
+        timeout: 10
+        max-score: 3
+    - name: test_card_initialization_short_names
+      id: test_card_initialization_short_names
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test_card_initialization_short_names
+        setup-command: ''
+        command: "python -m unittest test_card.TestCard.test_card_initialization_with_short_names"
+        timeout: 10
+        max-score: 3
+    - name: test_card_initialization_invalid
+      id: test_card_initialization_invalid
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test_card_initialization_invalid
+        setup-command: ''
+        command: "python -m unittest test_card.TestCard.test_card_initialization_invalid_name test_card.TestCard.test_card_initialization_invalid_suit"
+        timeout: 10
+        max-score: 3
+    - name: test_string_representations
+      id: test_string_representations
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test_string_representations
+        setup-command: ''
+        command: "python -m unittest test_card.TestCard.test_str_representation test_card.TestCard.test_repr_representation"
+        timeout: 10
+        max-score: 3
+    - name: test_base_symbol
+      id: test_base_symbol
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test_base_symbol
+        setup-command: ''
+        command: "python -m unittest test_card.TestCard.test_base_symbol"
+        timeout: 10
+        max-score: 3
+    - name: test_desc_and_state
+      id: test_desc_and_state
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test_desc_and_state
+        setup-command: ''
+        command: "python -m unittest test_card.TestCard.test_desc test_card.TestCard.test_state"
+        timeout: 10
+        max-score: 3
+    - name: test_is_trump_no_suit
+      id: test_is_trump_no_suit
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test_is_trump_no_suit
+        setup-command: ''
+        command: "python -m unittest test_card.TestCard.test_is_trump_no_trump_suit"
+        timeout: 10
+        max-score: 3
+    - name: test_comparison_with_trump
+      id: test_comparison_with_trump
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test_comparison_with_trump
+        setup-command: ''
+        command: "python -m unittest test_card.TestCard.test_comparison_operators_with_trump test_card.TestCard.test_comparison_with_trump_set"
+        timeout: 10
+        max-score: 3
+    - name: test_get_trump_symbol
+      id: test_get_trump_symbol
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test_get_trump_symbol
+        setup-command: ''
+        command: "python -m unittest test_card.TestCard.test_get_trump_symbol"
+        timeout: 10
+        max-score: 3
+    - name: test_set_trump_methods
+      id: test_set_trump_methods
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test_set_trump_methods
+        setup-command: ''
+        command: "python -m unittest test_card.TestCard.test_set_trump_no_suit test_card.TestCard.test_set_trump_with_suit test_card.TestCard.test_set_trump_off_jack test_card.TestCard.test_set_trump_regular_jack test_card.TestCard.test_set_trump_non_trump_card"
+        timeout: 15
+        max-score: 3 
+    - name: test_jokers_comprehensive
+      id: test_jokers_comprehensive
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test_jokers_comprehensive
+        setup-command: ''
+        command: "python -m unittest test_card.TestCard.test_jokers_always_trump"
+        timeout: 10
+        max-score: 4
+    - name: test_ten_card_special
+      id: test_ten_card_special
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test_ten_card_special
+        setup-command: ''
+        command: "python -m unittest test_card.TestCard.test_ten_card_special_case"
+        timeout: 10
+        max-score: 4
+    - name: test_data_integrity
+      id: test_data_integrity
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test_data_integrity
+        setup-command: ''
+        command: "python -m unittest test_card.TestCard.test_card_reference_integrity test_card.TestCard.test_suit_to_symbol_mapping"
+        timeout: 10
+        max-score: 4
+    - name: test_all_off_jack_combinations
+      id: test_all_off_jack_combinations
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test_all_off_jack_combinations
+        setup-command: ''
+        command: "python -m unittest test_card.TestCard.test_all_off_jack_combinations"
+        timeout: 10
+        max-score: 4
+    - name: test_existing_methods
+      id: test_existing_methods
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: test_existing_methods
+        setup-command: ''
+        command: "python -m unittest test_card.TestCard.test_comparison_operators_no_trump test_card.TestCard.test_equality_operator"
+        timeout: 10
+        max-score: 4
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        CODING-STYLE_RESULTS: "${{steps.coding-style.outputs.result}}"
+        TEST_IS_TRUMP_BASIC_RESULTS: "${{steps.test_is_trump_basic.outputs.result}}"
+        TEST_IS_TRUMP_OFF_JACKS_RESULTS: "${{steps.test_is_trump_off_jacks.outputs.result}}"
+        TEST_IS_TRUMP_JOKERS_RESULTS: "${{steps.test_is_trump_jokers.outputs.result}}"
+        TEST_IS_NONTRUMP_RESULTS: "${{steps.test_is_nontrump.outputs.result}}"
+        TEST_CARD_INITIALIZATION_RESULTS: "${{steps.test_card_initialization.outputs.result}}"
+        TEST_CARD_INITIALIZATION_SHORT_NAMES_RESULTS: "${{steps.test_card_initialization_short_names.outputs.result}}"
+        TEST_CARD_INITIALIZATION_INVALID_RESULTS: "${{steps.test_card_initialization_invalid.outputs.result}}"
+        TEST_STRING_REPRESENTATIONS_RESULTS: "${{steps.test_string_representations.outputs.result}}"
+        TEST_BASE_SYMBOL_RESULTS: "${{steps.test_base_symbol.outputs.result}}"
+        TEST_DESC_AND_STATE_RESULTS: "${{steps.test_desc_and_state.outputs.result}}"
+        TEST_IS_TRUMP_NO_SUIT_RESULTS: "${{steps.test_is_trump_no_suit.outputs.result}}"
+        TEST_COMPARISON_WITH_TRUMP_RESULTS: "${{steps.test_comparison_with_trump.outputs.result}}"
+        TEST_GET_TRUMP_SYMBOL_RESULTS: "${{steps.test_get_trump_symbol.outputs.result}}"
+        TEST_SET_TRUMP_METHODS_RESULTS: "${{steps.test_set_trump_methods.outputs.result}}"
+        TEST_JOKERS_COMPREHENSIVE_RESULTS: "${{steps.test_jokers_comprehensive.outputs.result}}"
+        TEST_TEN_CARD_SPECIAL_RESULTS: "${{steps.test_ten_card_special.outputs.result}}"
+        TEST_DATA_INTEGRITY_RESULTS: "${{steps.test_data_integrity.outputs.result}}"
+        TEST_ALL_OFF_JACK_COMBINATIONS_RESULTS: "${{steps.test_all_off_jack_combinations.outputs.result}}"
+        TEST_EXISTING_METHODS_RESULTS: "${{steps.test_existing_methods.outputs.result}}"
+      with:
+        runners: coding-style,test_is_trump_basic,test_is_trump_off_jacks,test_is_trump_jokers,test_is_nontrump,test_card_initialization,test_card_initialization_short_names,test_card_initialization_invalid,test_string_representations,test_base_symbol,test_desc_and_state,test_is_trump_no_suit,test_comparison_with_trump,test_get_trump_symbol,test_set_trump_methods,test_jokers_comprehensive,test_ten_card_special,test_data_integrity,test_all_off_jack_combinations,test_existing_methods

@@ -24,7 +24,7 @@ jobs:
         setup-command: ''
         command: "pylint card.py"
         timeout: 10
-        max-score: 10
+        max-score: 1
     - name: test_is_trump_basic
       id: test_is_trump_basic
       uses: classroom-resources/autograding-command-grader@v1
@@ -33,7 +33,7 @@ jobs:
         setup-command: ''
         command: "python -m unittest test_card.TestCard.test_is_trump_with_trump_suit"
         timeout: 10
-        max-score: 10
+        max-score: 2
     - name: test_is_trump_off_jacks
       id: test_is_trump_off_jacks
       uses: classroom-resources/autograding-command-grader@v1
@@ -42,7 +42,7 @@ jobs:
         setup-command: ''
         command: "python -m unittest test_card.TestCard.test_is_trump_off_jacks"
         timeout: 10
-        max-score: 10
+        max-score: 3
     - name: test_is_trump_jokers
       id: test_is_trump_jokers
       uses: classroom-resources/autograding-command-grader@v1
@@ -51,7 +51,7 @@ jobs:
         setup-command: ''
         command: "python -m unittest test_card.TestCard.test_is_trump_jokers"
         timeout: 10
-        max-score: 10
+        max-score: 2
     - name: test_is_nontrump
       id: test_is_nontrump
       uses: classroom-resources/autograding-command-grader@v1
@@ -60,7 +60,7 @@ jobs:
         setup-command: ''
         command: "python -m unittest test_card.TestCard.test_is_nontrump"
         timeout: 10
-        max-score: 10
+        max-score: 2
     - name: test_card_initialization
       id: test_card_initialization
       uses: classroom-resources/autograding-command-grader@v1
@@ -69,7 +69,7 @@ jobs:
         setup-command: ''
         command: "python -m unittest test_card.TestCard.test_card_initialization_valid"
         timeout: 10
-        max-score: 3
+        max-score: 1
     - name: test_card_initialization_short_names
       id: test_card_initialization_short_names
       uses: classroom-resources/autograding-command-grader@v1
@@ -78,7 +78,7 @@ jobs:
         setup-command: ''
         command: "python -m unittest test_card.TestCard.test_card_initialization_with_short_names"
         timeout: 10
-        max-score: 3
+        max-score: 1
     - name: test_card_initialization_invalid
       id: test_card_initialization_invalid
       uses: classroom-resources/autograding-command-grader@v1
@@ -87,7 +87,7 @@ jobs:
         setup-command: ''
         command: "python -m unittest test_card.TestCard.test_card_initialization_invalid_name test_card.TestCard.test_card_initialization_invalid_suit"
         timeout: 10
-        max-score: 3
+        max-score: 1
     - name: test_string_representations
       id: test_string_representations
       uses: classroom-resources/autograding-command-grader@v1
@@ -96,7 +96,7 @@ jobs:
         setup-command: ''
         command: "python -m unittest test_card.TestCard.test_str_representation test_card.TestCard.test_repr_representation"
         timeout: 10
-        max-score: 3
+        max-score: 1
     - name: test_base_symbol
       id: test_base_symbol
       uses: classroom-resources/autograding-command-grader@v1
@@ -105,7 +105,7 @@ jobs:
         setup-command: ''
         command: "python -m unittest test_card.TestCard.test_base_symbol"
         timeout: 10
-        max-score: 3
+        max-score: 1
     - name: test_desc_and_state
       id: test_desc_and_state
       uses: classroom-resources/autograding-command-grader@v1
@@ -114,7 +114,7 @@ jobs:
         setup-command: ''
         command: "python -m unittest test_card.TestCard.test_desc test_card.TestCard.test_state"
         timeout: 10
-        max-score: 3
+        max-score: 1
     - name: test_is_trump_no_suit
       id: test_is_trump_no_suit
       uses: classroom-resources/autograding-command-grader@v1
@@ -123,7 +123,7 @@ jobs:
         setup-command: ''
         command: "python -m unittest test_card.TestCard.test_is_trump_no_trump_suit"
         timeout: 10
-        max-score: 3
+        max-score: 1
     - name: test_comparison_with_trump
       id: test_comparison_with_trump
       uses: classroom-resources/autograding-command-grader@v1
@@ -132,7 +132,7 @@ jobs:
         setup-command: ''
         command: "python -m unittest test_card.TestCard.test_comparison_operators_with_trump test_card.TestCard.test_comparison_with_trump_set"
         timeout: 10
-        max-score: 3
+        max-score: 1
     - name: test_get_trump_symbol
       id: test_get_trump_symbol
       uses: classroom-resources/autograding-command-grader@v1
@@ -141,7 +141,7 @@ jobs:
         setup-command: ''
         command: "python -m unittest test_card.TestCard.test_get_trump_symbol"
         timeout: 10
-        max-score: 3
+        max-score: 1
     - name: test_set_trump_methods
       id: test_set_trump_methods
       uses: classroom-resources/autograding-command-grader@v1
@@ -150,7 +150,7 @@ jobs:
         setup-command: ''
         command: "python -m unittest test_card.TestCard.test_set_trump_no_suit test_card.TestCard.test_set_trump_with_suit test_card.TestCard.test_set_trump_off_jack test_card.TestCard.test_set_trump_regular_jack test_card.TestCard.test_set_trump_non_trump_card"
         timeout: 15
-        max-score: 3 
+        max-score: 1 
     - name: test_jokers_comprehensive
       id: test_jokers_comprehensive
       uses: classroom-resources/autograding-command-grader@v1
@@ -159,7 +159,7 @@ jobs:
         setup-command: ''
         command: "python -m unittest test_card.TestCard.test_jokers_always_trump"
         timeout: 10
-        max-score: 4
+        max-score: 1
     - name: test_ten_card_special
       id: test_ten_card_special
       uses: classroom-resources/autograding-command-grader@v1
@@ -168,7 +168,7 @@ jobs:
         setup-command: ''
         command: "python -m unittest test_card.TestCard.test_ten_card_special_case"
         timeout: 10
-        max-score: 4
+        max-score: 1
     - name: test_data_integrity
       id: test_data_integrity
       uses: classroom-resources/autograding-command-grader@v1
@@ -177,7 +177,7 @@ jobs:
         setup-command: ''
         command: "python -m unittest test_card.TestCard.test_card_reference_integrity test_card.TestCard.test_suit_to_symbol_mapping"
         timeout: 10
-        max-score: 4
+        max-score: 1
     - name: test_all_off_jack_combinations
       id: test_all_off_jack_combinations
       uses: classroom-resources/autograding-command-grader@v1
@@ -186,7 +186,7 @@ jobs:
         setup-command: ''
         command: "python -m unittest test_card.TestCard.test_all_off_jack_combinations"
         timeout: 10
-        max-score: 4
+        max-score: 1
     - name: test_existing_methods
       id: test_existing_methods
       uses: classroom-resources/autograding-command-grader@v1
@@ -195,7 +195,7 @@ jobs:
         setup-command: ''
         command: "python -m unittest test_card.TestCard.test_comparison_operators_no_trump test_card.TestCard.test_equality_operator"
         timeout: 10
-        max-score: 4
+        max-score: 1
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:

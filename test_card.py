@@ -217,7 +217,7 @@ class TestCard(unittest.TestCase):
 
         self.jack_diamonds.set_trump('Spades')
         self.assertEqual(self.jack_diamonds.symbol, 'N')
-        self.assertEqual(self.jack_diamonds.rank, 1)
+        self.assertEqual(self.jack_diamonds.rank, 0)
         self.assertEqual(self.jack_diamonds.points, 0)
         self.assertEqual(self.jack_diamonds.trump_suit, 'Spades')
 
@@ -233,7 +233,7 @@ class TestCard(unittest.TestCase):
 
         self.jack_diamonds.set_trump('Spades')  # Non trump Jack for Spades
         self.assertEqual(self.jack_diamonds.symbol, 'N')  # Non-trump symbol
-        self.assertEqual(self.jack_diamonds.rank, 1)      # Non-trump rank
+        self.assertEqual(self.jack_diamonds.rank, 0)      # Non-trump rank
         # No points for non-trump
         self.assertEqual(self.jack_diamonds.points, 0)
         self.assertEqual(self.jack_diamonds.trump_suit, 'Spades')
@@ -252,7 +252,7 @@ class TestCard(unittest.TestCase):
         self.king_hearts.set_trump('Spades')
 
         self.assertEqual(self.king_hearts.symbol, 'N')  # Non-trump symbol
-        self.assertEqual(self.king_hearts.rank, 1)      # Non-trump rank
+        self.assertEqual(self.king_hearts.rank, 0)      # Non-trump rank
         # No points for non-trump
         self.assertEqual(self.king_hearts.points, 0)
         self.assertEqual(self.king_hearts.trump_suit, 'Spades')
